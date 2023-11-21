@@ -37,6 +37,16 @@ func (memberInfo *MemberInfo) Descriptor() string {
 	return memberInfo.cp.getUtf8(memberInfo.descriptorIndex)
 }
 
+func (memberInfo *MemberInfo) CodeAttribute() *CodeAttribute {
+	for _, attrInfo := range memberInfo.attributes {
+		switch attrInfo.(type) {
+		case *CodeAttribute:
+			return attrInfo.(*CodeAttribute)
+		}
+	}
+	return nil
+}
+
 func readMembers(reader *ClassReader, cp ConstantPool) []*MemberInfo {
 	memberCount := reader.readUint16()
 	members := make([]*MemberInfo, memberCount)

@@ -29,3 +29,7 @@ func (thread *Thread) PopFrame() *Frame {
 func (thread *Thread) CurrentFrame() *Frame {
 	return thread.stack.top()
 }
+
+func (thread *Thread) NewFrame(maxLocals, maxStack uint) *Frame {
+	return newFrame(thread, maxLocals, maxStack)
+}
