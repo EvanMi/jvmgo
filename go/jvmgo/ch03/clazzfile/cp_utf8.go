@@ -26,12 +26,6 @@ func (constantUtf8Info *ConstantUtf8Info) Str() string {
 	return constantUtf8Info.str
 }
 
-/*
-func decodeMUTF8(bytes []byte) string {
-	return string(bytes) // not correct!
-}
-*/
-
 // mutf8 -> utf16 -> utf32 -> string
 // see java.io.DataInputStream.readUTF(DataInput)
 func decodeMUTF8(bytearr []byte) string {
